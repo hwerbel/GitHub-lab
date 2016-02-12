@@ -49,9 +49,10 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
 
             // Print the returned repositories to the output window
             for repo in newRepos {
-                print(repo)
+                //print(repo)
             }
             self.repos = newRepos
+            //print(newRepos)
             self.tableView.reloadData()
 
             MBProgressHUD.hideHUDForView(self.view, animated: true)
@@ -64,7 +65,6 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
         let cell = tableView.dequeueReusableCellWithIdentifier("RepoCell", forIndexPath: indexPath) as! RepoCell
         print(self.repos)
         cell.repo = self.repos[indexPath.row]
-        
         return cell
     }
     

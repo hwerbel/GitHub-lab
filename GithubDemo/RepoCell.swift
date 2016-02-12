@@ -19,15 +19,25 @@ class RepoCell: UITableViewCell {
     @IBOutlet weak var forksLabel: UILabel!
     @IBOutlet weak var starsLabel: UILabel!
     
-    var repo: GithubRepo!
+    var repo: GithubRepo!  {
+        didSet {
+            nameLabel.text = repo.name
+            ownerLabel.text = repo.ownerHandle
+            starsLabel.text = String(repo.stars!)
+            forksLabel.text = String(repo.forks!)
+            descriptionLabel.text = repo.repoDescription
+            let imageURL = NSURL(string: repo.ownerAvatarURL!)
+            avatarImageView.setImageWithURL(imageURL!)
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        if repo.name != nil {
-            nameLabel.text = repo.name
-        }
-        
+       // if repo.name != nil {
+          //  nameLabel.text = repo.name
+       // }
+        /*
         if repo.ownerHandle != nil {
             ownerLabel.text = repo.ownerHandle
         }
@@ -48,6 +58,7 @@ class RepoCell: UITableViewCell {
             let imageURL = NSURL(string: repo.ownerAvatarURL!)
             avatarImageView.setImageWithURL(imageURL!)
         }
+*/
 
     }
 
